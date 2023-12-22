@@ -8,8 +8,7 @@ import useAxiosHook from "../../Hooks/AxiosHook/useAxiosHook";
 
 const UpdateAssignment = () => {
   const Assignments = useLoaderData();
-  const { _id, Tittle, level, startDate, description,} =
-    Assignments;
+  const { _id, Tittle, level, startDate, description } = Assignments;
   const date = new Date(startDate);
   const [updateDate, setStartDate] = useState(date);
   const [updateLevel, setUpdateLevel] = useState(level);
@@ -19,6 +18,7 @@ const UpdateAssignment = () => {
   const navigate = useNavigate();
 
   const handleChangePage = (e) => {
+    
     setUpdateLevel(e.target.value);
   };
 
@@ -32,18 +32,20 @@ const UpdateAssignment = () => {
     const fullForm = {
       PostedUser,
       Tittle,
-      level,
+      level:updateLevel,
       Date,
       description,
       startDate,
     };
-
-    const link = `/details/${_id}`;
-    axiosSecure.patch(link, fullForm).then((res) => {
+console.log(fullForm)
+    axiosSecure.patch(`/details?id=${_id}`, fullForm).then((res) => {
       if (res.data.modifiedCount > 0) {
         form.reset();
         Swal.fire("Yeahh!", "Successfully Update product", "success");
-        navigate("/All-Assignment");
+        navigate("/Dashboard");
+      } 
+      else {
+        Swal.fire("Opps!", "You wasn't Update Anything", "warning");
       }
     });
   };
