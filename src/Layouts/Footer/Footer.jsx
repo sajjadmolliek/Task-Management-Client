@@ -6,9 +6,9 @@ import { BsLinkedin, BsTwitter } from "react-icons/Bs";
 const Footer = () => {
 
 return (
-  <div className="bg-[#2F0F00]">
+  <div className="bg-[#C6C6C6]">
     <div className="w-[95%] mx-auto">
-      <footer className="footer  py-10 justify-around text-white">
+      <footer className="footer  py-10 justify-around text-black">
         <nav>
           <header className="footer-title">YOUR ACCOUNT</header>
           <a className="link link-hover">Running Shoes</a>
@@ -38,24 +38,24 @@ return (
           </div>
           <fieldset className="form-control w-[90%] md:w-[100%] ">
             <label className="label">
-              <span className="label-text opacity-40 text-white">Enter your email address</span>
+              <span className="label-text opacity-40 text-black">Enter your email address</span>
             </label>
             <div className="relative">
               <input
                 type="text"
                 placeholder="username@site.com"
-                className="input input-bordered w-full pr-16 bg-[#FFA80033]"
+                className="input input-bordered w-full pr-16 bg-white"
               />
-              <button className="btn bg-[#FE834C] text-white font-bold border-0 absolute top-0 right-0 rounded-l-none">
+              <button className="btn bg-[#38697F] text-black font-bold border-0 absolute top-0 right-0 rounded-l-none">
                 Subscribe
               </button>
             </div>
           </fieldset>
           <div className="flex w-[88%] md:w-[98%]  gap-6 mt-8 flex-wrap">
-              <FaFacebookF className="bg-[#FE834C] p-1 text-3xl rounded-full"></FaFacebookF>
-              <AiFillYoutube className="bg-[#FE834C] p-1 text-3xl rounded-full"></AiFillYoutube>
-              <BsLinkedin className="bg-[#FE834C] p-1 text-3xl rounded-lg"></BsLinkedin>
-              <BsTwitter className="bg-[#FE834C] p-1 text-3xl rounded-full"></BsTwitter>
+              <FaFacebookF className="bg-[#38697F] p-1 text-3xl rounded-full"></FaFacebookF>
+              <AiFillYoutube className="bg-[#38697F] p-1 text-3xl rounded-full"></AiFillYoutube>
+              <BsLinkedin className="bg-[#38697F] p-1 text-3xl rounded-lg"></BsLinkedin>
+              <BsTwitter className="bg-[#38697F] p-1 text-3xl rounded-full"></BsTwitter>
           </div>
           <br />
           <aside>

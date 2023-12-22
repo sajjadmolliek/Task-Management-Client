@@ -1,6 +1,6 @@
 const Faq = () => {
   return (
-    <div className="bg-[#FE834C]">
+    <div className="bg-[#38697F]">
     
       <div className="w-[20rem] md:w-[40rem] lg:w-[70rem] mx-auto py-6 space-y-4 rounded-none">
       <h1 className="text-[#ffffff] text-2xl md:text-4xl font-bold text-center font-serif">Frequently Asked Question
