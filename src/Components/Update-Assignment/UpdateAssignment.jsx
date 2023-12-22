@@ -8,7 +8,7 @@ import useAxiosHook from "../../Hooks/AxiosHook/useAxiosHook";
 
 const UpdateAssignment = () => {
   const Assignments = useLoaderData();
-  const { _id, Tittle, level, Marks, startDate, description, photo } =
+  const { _id, Tittle, level, startDate, description,} =
     Assignments;
   const date = new Date(startDate);
   const [updateDate, setStartDate] = useState(date);
@@ -16,7 +16,7 @@ const UpdateAssignment = () => {
   const { user } = useCustomeHook();
   const axiosSecure = useAxiosHook();
   const PostedUser = user.email;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChangePage = (e) => {
     setUpdateLevel(e.target.value);
@@ -28,34 +28,38 @@ const UpdateAssignment = () => {
     const Tittle = form.tittle.value;
     const description = document.getElementById("Textarea").value;
     const Date = document.getElementById("date").value;
-    const Marks = parseFloat(form.marks.value);
-    const photo = form.photo.value;
     const startDate = updateDate;
-    const fullForm = {PostedUser,Tittle,level,Marks,Date,description,photo,startDate};
-  
-    const link = `/details/${_id}`
-    axiosSecure.patch(link,fullForm)
-      .then((res) => {
-        if (res.data.modifiedCount > 0) {
-          form.reset();
-          Swal.fire("Yeahh!", "Successfully Update product", "success");
-          navigate("/All-Assignment");
-        }
-      });
+    const fullForm = {
+      PostedUser,
+      Tittle,
+      level,
+      Date,
+      description,
+      startDate,
+    };
+
+    const link = `/details/${_id}`;
+    axiosSecure.patch(link, fullForm).then((res) => {
+      if (res.data.modifiedCount > 0) {
+        form.reset();
+        Swal.fire("Yeahh!", "Successfully Update product", "success");
+        navigate("/All-Assignment");
+      }
+    });
   };
 
   return (
     <div>
-      <h1 className="text-[#FE834C] text-2xl md:text-4xl font-bold text-center font-serif my-10">
-        Updating Assignment{" "}
+      <h1 className="text-[#38697F] text-2xl md:text-4xl font-bold text-center font-serif my-10">
+        Updating Task{" "}
       </h1>
       <form
         onSubmit={handleUpdate}
-        className="lg:w-3/5 mx-auto bg-[#FE834C33] p-10 my-10 rounded-lg"
+        className="lg:w-3/5 mx-auto bg-[#38697F33] p-10 my-10 rounded-lg"
       >
         <div className=" flex flex-col lg:flex-row gap-12 mb-10">
           <label className="input-group md:w-4/5 lg:w-full mx-auto input-group-md">
-            <span className="w-[10rem] bg-[#FE834C] text-white font-bold">
+            <span className="w-[10rem] bg-[#38697F] text-white font-bold">
               Tittle
             </span>
             <input
@@ -70,19 +74,7 @@ const UpdateAssignment = () => {
 
         <div className="  flex flex-col lg:flex-row gap-12 mb-10">
           <label className="input-group md:w-4/5 lg:w-1/2 mx-auto lg:input-group-md">
-            <span className="w-[10rem] bg-[#FE834C] text-white font-bold">
-              Marks
-            </span>
-            <input
-              defaultValue={Marks}
-              name="marks"
-              type="text"
-              placeholder="Marks"
-              className="input input-bordered w-full"
-            />
-          </label>
-          <label className="input-group md:w-4/5 lg:w-1/2 mx-auto lg:input-group-md">
-            <span className="lg:w-[31%] md:w-[23%] w-[33%] bg-[#FE834C] text-white font-bold">
+            <span className="lg:w-[31%] md:w-[23%] w-[33%] bg-[#38697F] text-white font-bold">
               Date
             </span>
             <DatePicker
@@ -92,23 +84,8 @@ const UpdateAssignment = () => {
               onChange={(date) => setStartDate(date)}
             />
           </label>
-        </div>
-
-        <div className=" flex flex-col lg:flex-row gap-12 mb-10">
           <label className="input-group md:w-4/5 lg:w-1/2 mx-auto lg:input-group-md">
-            <span className="w-[10rem] bg-[#FE834C] text-white font-bold">
-              Image URL
-            </span>
-            <input
-              defaultValue={photo}
-              name="photo"
-              className="w-full input input-bordered input-md"
-              type="text"
-              placeholder="Thumbnail Image URL"
-            />
-          </label>
-          <label className="input-group md:w-4/5 lg:w-1/2 mx-auto lg:input-group-md">
-            <span className="w-[10rem] bg-[#FE834C] text-white font-bold">
+            <span className="w-[10rem] bg-[#38697F] text-white font-bold">
               Level
             </span>
             <select
@@ -117,16 +94,16 @@ const UpdateAssignment = () => {
               onChange={handleChangePage}
               className="input input-bordered w-full"
             >
-              <option value="Easy">Easy</option>
+              <option value="Low">Low</option>
               <option value="Medium">Medium</option>
-              <option value="Hard">Hard</option>
+              <option value="High">High</option>
             </select>
           </label>
         </div>
 
         <div className=" flex flex-col lg:flex-row gap-12 mb-10">
           <label className="input-group md:w-4/5 lg:w-full mx-auto input-group-md">
-            <span className="w-[10rem] bg-[#FE834C] text-white font-bold">
+            <span className="w-[10rem] bg-[#38697F] text-white font-bold">
               Description
             </span>
             <textarea
@@ -139,7 +116,7 @@ const UpdateAssignment = () => {
         </div>
 
         <input
-          className="w-full text-center btn text-white text-bold text-lg bg-[#FE834C]"
+          className="w-full text-center btn text-white text-bold text-lg bg-[#38697F]"
           type="submit"
           value="Update Assignment"
         />

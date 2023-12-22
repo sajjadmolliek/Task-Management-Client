@@ -12,7 +12,7 @@ const PrivateRoute = ({ children }) => {
 
     return (
       <div className="flex justify-center min-h-screen items-center">
-        <HashLoader color="#FE834C" />
+        <HashLoader color="#38697f" />
       </div>
     );
   }

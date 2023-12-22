@@ -12,7 +12,7 @@ const Banner = () => {
        <div className="absolute">
        {
         user? 
-        <Link to={"/All-Assignment"}>
+        <Link to={"/Dashboard"}>
         <button type="button" className="btn btn-sm lg:btn-md bg-[#38697F] border-0 text-white hover:text-black relative top-[19rem] lg:top-[33rem] left-20">Let’s Explore</button>
         </Link>:
         <Link to={"/logins"}>

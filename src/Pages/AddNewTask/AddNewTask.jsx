@@ -7,7 +7,7 @@ import useAxiosHook from "../../Hooks/AxiosHook/useAxiosHook";
 
 const AddNewTask = () => {
   const [startDate, setStartDate] = useState(new Date());
-  const [level, setLevel] = useState("Easy");
+  const [level, setLevel] = useState("Low");
   const { user } = useCustomeHook();
   const axiosSecure = useAxiosHook();
   const PostedUser = user?.email;
@@ -22,7 +22,7 @@ const AddNewTask = () => {
     const Tittle = form.tittle.value;
     const description = document.getElementById("Textarea").value;
     const Date = document.getElementById("date").value;
-
+    const status = "todo";
     const fullForm = {
       PostedUser,
       Tittle,
@@ -30,11 +30,12 @@ const AddNewTask = () => {
       Date,
       description,
       startDate,
+      status
     };
     const isNotEmpty = Object.values(fullForm).some((value) => value === "");
 
     if (!isNotEmpty) {
-      const link = `/AddAssignment`;
+      const link = `/AddTask`;
       axiosSecure.post(link, fullForm).then((res) => {
         if (res.data.acknowledged) {
           form.reset();
