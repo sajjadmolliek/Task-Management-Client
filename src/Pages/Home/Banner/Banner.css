@@ -1,0 +1,17 @@
+.banner{
+    background-image: url('../../../assets/Banner.png');
+    background-size: cover;
+    /* height: 45rem; */
+}
+/* .banner-md{
+    background-image: url('../../../assets/Banner.png');
+    background-size: cover;
+    height: 30rem;
+    
+    
+} */
+.overlay{
+    /* background-size: cover; */
+    /* height: 40rem; */
+    /* background-color: rgba(0, 0, 0, 0.539); */
+}
