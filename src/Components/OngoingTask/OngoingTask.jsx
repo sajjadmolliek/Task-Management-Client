@@ -51,6 +51,29 @@ const OngoingTask = () => {
       }
     });
   };
+// Update Assignment status and change state
+  const handleUpdateStatus = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to move this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, move it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const updateStatus = "complete"
+        axiosSecure.patch(`/updateStatus?id=${id}`, {updateStatus}).then((data) => {
+          const remain = assignments.filter((datas) => datas._id !== id);
+          if (data.data.acknowledged) {
+            setAssignments(remain);
+            Swal.fire("Moved!", "Your file has been Moved.", "success");
+          }
+        });
+      }
+    });
+  };
 
   // desable Delete Button WIth SweetAlert
   const desableDeleteBttn = () => {
@@ -115,7 +138,9 @@ const OngoingTask = () => {
                     <p>Description: {assignment.description}</p>
                     <p>Deadline: {assignment.Date} at 11:59pm</p>
                     <div className="flex justify-center items-center gap-8">
-                      <button className="btn bg-[#38697f] text-white">
+                      <button
+                       onClick={() => handleUpdateStatus(assignment._id)}
+                       className="btn bg-[#38697f] text-white">
                         Move to complete
                       </button>
 

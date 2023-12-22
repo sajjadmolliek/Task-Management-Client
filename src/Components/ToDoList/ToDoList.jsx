@@ -20,7 +20,7 @@ const ToDoList = () => {
   useEffect(() => {
     axiosSecure.get(link1).then((data) => setAssignments(data.data));
   }, [axiosSecure, level, link1]);
-
+console.log(assignments);
   // Level change to find by query
   const handleChangeLevel = (e) => {
     const LevelValue = e.target.value;
@@ -51,16 +51,16 @@ const ToDoList = () => {
       }
     });
   };
-  // Delete Assignment and change state
+  // Update Assignment status and change state
   const handleUpdateStatus = (id) => {
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "You want to move this!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, move it!",
     }).then((result) => {
       if (result.isConfirmed) {
         const updateStatus = "ongoing"
@@ -135,7 +135,7 @@ const ToDoList = () => {
 
                     <p>Description: {assignment.description}</p>
                     <p>Deadline: {assignment.Date} at 11:59pm</p>
-                    <div className="flex justify-center items-center gap-8">
+                    <div className="flex flex-col md:flex-row justify-center items-center gap-8">
                       <button
                       onClick={() => handleUpdateStatus(assignment._id)}
                        className="btn bg-[#38697f] text-white">

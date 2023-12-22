@@ -7,6 +7,7 @@ import Resister from "../Pages/Resister/Resister";
 import PrivateRoute from "../Private/PrivateRoute";
 import UpdateAssignment from "../Components/Update-Assignment/UpdateAssignment";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import Feature from "../Pages/Home/Feature/Feature";
 
 
 
@@ -20,6 +21,11 @@ const Routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+       
+      },
+      {
+        path: "/feature",
+        element: <Feature/>,
        
       },
       {

@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import useCustomeHook from "../../Hooks/useCustomeHook";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
 import useAxiosHook from "../../Hooks/AxiosHook/useAxiosHook";
-
-
 
 const Complete = () => {
   const [levelValue, setLevelValue] = useState("All");
@@ -13,7 +10,6 @@ const Complete = () => {
   const { user } = useCustomeHook();
   const axiosSecure = useAxiosHook();
   const currentUser = user?.email || "No user";
-
 
   // data loading By Query
   const link1 = `/AddTaskQuery?level=${level}`;
@@ -40,15 +36,39 @@ const Complete = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      if (result.isConfirmed) { 
-        axiosSecure.delete(`/delete?id=${id}`,).then((data) => {
-         
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/delete?id=${id}`).then((data) => {
           const remain = assignments.filter((datas) => datas._id !== id);
           if (data.data.acknowledged) {
             setAssignments(remain);
             Swal.fire("Deleted!", "Your file has been deleted.", "success");
           }
         });
+      }
+    });
+  };
+  // Update Assignment status and change state
+  const handleUpdateStatus = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to move this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, move it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const updateStatus = "ongoing";
+        axiosSecure
+          .patch(`/updateStatus?id=${id}`, { updateStatus })
+          .then((data) => {
+            const remain = assignments.filter((datas) => datas._id !== id);
+            if (data.data.acknowledged) {
+              setAssignments(remain);
+              Swal.fire("Moved!", "Your file has been Moved.", "success");
+            }
+          });
       }
     });
   };
@@ -61,9 +81,6 @@ const Complete = () => {
       "error"
     );
   };
-
-
-
 
   if (assignments.length === 0) {
     return (
@@ -98,9 +115,8 @@ const Complete = () => {
         </select>
 
         <div className="w-[85%] mx-auto my-20">
-       
           <div className="products-container justify-center items-center lg:w-[80rem] grid grid-cols-1 lg:grid-cols-2 gap-20">
-          {assignments?.map((assignment) =>
+            {assignments?.map((assignment) =>
               assignment.status === "complete" ? (
                 <div
                   key={assignment._id}
@@ -117,15 +133,13 @@ const Complete = () => {
                     <p>Description: {assignment.description}</p>
                     <p>Deadline: {assignment.Date} at 11:59pm</p>
                     <div className="flex justify-center items-center gap-8">
-                      <button className="btn bg-[#38697f] text-white">
-                        Move to on-going
+                      <button
+                        onClick={() => handleUpdateStatus(assignment._id)}
+                        className="btn bg-[#38697f] text-white"
+                      >
+                        Back to on-going
                       </button>
 
-                      <Link to={`/update/${assignment._id}`}>
-                        <button className="btn bg-[#38697f] text-white">
-                          Edit
-                        </button>
-                      </Link>
                       {currentUser === assignment.PostedUser ? (
                         <>
                           <button
@@ -153,13 +167,10 @@ const Complete = () => {
               )
             )}
           </div>
-
         </div>
       </div>
     );
   }
 };
-
-
 
 export default Complete;
