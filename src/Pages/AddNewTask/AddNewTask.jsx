@@ -10,8 +10,7 @@ const AddNewTask = () => {
   const [level, setLevel] = useState("Easy");
   const { user } = useCustomeHook();
   const axiosSecure = useAxiosHook();
-  const PostedUser = user.email;
-  
+  const PostedUser = user?.email;
 
   const handleChangePage = (e) => {
     setLevel(e.target.value);
@@ -23,31 +22,25 @@ const AddNewTask = () => {
     const Tittle = form.tittle.value;
     const description = document.getElementById("Textarea").value;
     const Date = document.getElementById("date").value;
-    const Marks = parseFloat(form.marks.value);
-    const photo = form.photo.value;
 
     const fullForm = {
       PostedUser,
       Tittle,
       level,
-      Marks,
       Date,
       description,
-      photo,
       startDate,
-      
     };
     const isNotEmpty = Object.values(fullForm).some((value) => value === "");
 
     if (!isNotEmpty) {
-      const link = `/AddAssignment`
-      axiosSecure.post(link,fullForm)
-      .then((res) => {
+      const link = `/AddAssignment`;
+      axiosSecure.post(link, fullForm).then((res) => {
         if (res.data.acknowledged) {
           form.reset();
-          Swal.fire("Yeahh!", "Successfully added product", "success");
+          Swal.fire("Yeahh!", "Successfully added Task", "success");
         } else {
-          Swal.fire("OPPS!!","Failed to add the product","error");
+          Swal.fire("OPPS!!", "Failed to add the Task", "error");
         }
       });
     } else {
@@ -55,11 +48,6 @@ const AddNewTask = () => {
     }
   };
 
-
-
-
-
- 
   return (
     <div>
       <h1 className="text-[#38697f] text-2xl md:text-4xl font-bold text-center font-serif my-10">
@@ -85,17 +73,6 @@ const AddNewTask = () => {
 
         <div className="  flex flex-col lg:flex-row gap-12 mb-10">
           <label className="input-group md:w-4/5 lg:w-1/2 mx-auto lg:input-group-md">
-            <span className="w-[10rem] bg-[#38697f] text-white font-bold">
-              Marks
-            </span>
-            <input
-              name="marks"
-              type="text"
-              placeholder="Marks"
-              className="input input-bordered w-full"
-            />
-          </label>
-          <label className="input-group md:w-4/5 lg:w-1/2 mx-auto lg:input-group-md">
             <span className="lg:w-[31%] md:w-[23%] w-[33%] bg-[#38697f] text-white font-bold">
               Date
             </span>
@@ -106,32 +83,18 @@ const AddNewTask = () => {
               onChange={(date) => setStartDate(date)}
             />
           </label>
-        </div>
-
-        <div className=" flex flex-col lg:flex-row gap-12 mb-10">
           <label className="input-group md:w-4/5 lg:w-1/2 mx-auto lg:input-group-md">
             <span className="w-[10rem] bg-[#38697f] text-white font-bold">
-              Image URL
-            </span>
-            <input
-              name="photo"
-              className="w-full input input-bordered input-md"
-              type="text"
-              placeholder="Thumbnail Image URL"
-            />
-          </label>
-          <label className="input-group md:w-4/5 lg:w-1/2 mx-auto lg:input-group-md">
-            <span className="w-[10rem] bg-[#38697f] text-white font-bold">
-              Level
+              Priority
             </span>
             <select
               value={level}
               onChange={handleChangePage}
               className="input input-bordered w-full"
             >
-              <option value="Easy">Easy</option>
+              <option value="Low">Low</option>
               <option value="Medium">Medium</option>
-              <option value="Hard">Hard</option>
+              <option value="High">High</option>
             </select>
           </label>
         </div>
@@ -152,7 +115,7 @@ const AddNewTask = () => {
         <input
           className="w-full text-center btn text-white text-bold text-lg bg-[#38697f]"
           type="submit"
-          value="Post Assignment"
+          value="Add Task"
         />
       </form>
     </div>

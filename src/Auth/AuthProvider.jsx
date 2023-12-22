@@ -58,13 +58,13 @@ const AuthProvider = ({ children }) => {
 
       if (currentUser) {
         axios
-          .post("https://online-study-explore.vercel.app/jwt", sendingUser, {
+          .post("https://task-management-weld-pi.vercel.app/jwt", sendingUser, {
             withCredentials: true,
           })
           .then(() => {});
       } else {
         axios
-          .post("https://online-study-explore.vercel.app/logout-jwt", sendingUser, {
+          .post("https://task-management-weld-pi.vercel.app/logout-jwt", sendingUser, {
             withCredentials: true,
           })
           .then(() => {});

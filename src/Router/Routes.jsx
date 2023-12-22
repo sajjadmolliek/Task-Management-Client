@@ -4,9 +4,9 @@ import MainLayout from "../Layouts/MainLayout";
 import ErrorPage from "../Components/ErrorPage";
 import Logins from "../Pages/Logins/Logins";
 import Resister from "../Pages/Resister/Resister";
-import Dashboard from "../Pages/AllAssignment/Dashboard";
 import PrivateRoute from "../Private/PrivateRoute";
 import UpdateAssignment from "../Components/Update-Assignment/UpdateAssignment";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 
 
 
@@ -24,12 +24,13 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/Dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       },
+      
       {
         path: "/update/:id",
         element: <PrivateRoute><UpdateAssignment></UpdateAssignment></PrivateRoute>,
-        loader:({params})=>fetch(`https://online-study-explore.vercel.app/details/${params.id}`,{ credentials: "include" }),
+        loader:({params})=>fetch(`https://task-management-weld-pi.vercel.app/details/${params.id}`,{ credentials: "include" }),
        
       },
       {

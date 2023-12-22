@@ -9,5 +9,5 @@
 7. Status of marks will be pending until give the marks.
 8. when marks given, the assignment will remove from submitted Assignment Route.
 
-Live Link: https://online-study-explore.web.app/
+Live Link: https://task-management-44525.web.app/
 
