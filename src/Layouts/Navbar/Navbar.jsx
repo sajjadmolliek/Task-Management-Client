@@ -44,59 +44,11 @@ const Navbar = () => {
               ? "text-[black] font-bold underline"
               : "text-[#15849E] font-bold"
           }
-          to={"/All-Assignment"}
+          to={"/Dashboard"}
         >
-          All Assignment
+          Dashboard
         </NavLink>
       </li>
-      {user ? (
-        <>
-          <li>
-            <NavLink
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "pending"
-                  : isActive
-                  ? "text-[black] font-bold underline"
-                  : "text-[#15849E] font-bold"
-              }
-              to={"/Create-Assignment "}
-            >
-              Create Assignment
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "pending"
-                  : isActive
-                  ? "text-[black] font-bold underline"
-                  : "text-[#15849E] font-bold"
-              }
-              to={`/My-Assignment`}
-            >
-              My Assignment
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "pending"
-                  : isActive
-                  ? "text-[black] font-bold underline"
-                  : "text-[#15849E] font-bold"
-              }
-              to={"/Submitted-Assignment"}
-            >
-              Submitted Assignment
-            </NavLink>
-          </li>
-        </>
-      ) : (
-        ""
-      )}
     </>
   );
 

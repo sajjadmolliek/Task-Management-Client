@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useCustomeHook from "../../Hooks/useCustomeHook";
 import useAxiosHook from "../../Hooks/AxiosHook/useAxiosHook";
 
-const CreateAssignment = () => {
+const AddNewTask = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [level, setLevel] = useState("Easy");
   const { user } = useCustomeHook();
@@ -62,16 +62,16 @@ const CreateAssignment = () => {
  
   return (
     <div>
-      <h1 className="text-[#FE834C] text-2xl md:text-4xl font-bold text-center font-serif my-10">
+      <h1 className="text-[#38697f] text-2xl md:text-4xl font-bold text-center font-serif my-10">
         Posting Assignment{" "}
       </h1>
       <form
         onSubmit={handleAdd}
-        className="lg:w-3/5 mx-auto bg-[#FE834C33] p-10 my-10 rounded-lg"
+        className="lg:w-3/5 mx-auto bg-[#38697f33] p-10 my-10 rounded-lg"
       >
         <div className=" flex flex-col lg:flex-row gap-12 mb-10">
           <label className="input-group md:w-4/5 lg:w-full mx-auto input-group-md">
-            <span className="w-[10rem] bg-[#FE834C] text-white font-bold">
+            <span className="w-[10rem] bg-[#38697f] text-white font-bold">
               Tittle
             </span>
             <input
@@ -85,7 +85,7 @@ const CreateAssignment = () => {
 
         <div className="  flex flex-col lg:flex-row gap-12 mb-10">
           <label className="input-group md:w-4/5 lg:w-1/2 mx-auto lg:input-group-md">
-            <span className="w-[10rem] bg-[#FE834C] text-white font-bold">
+            <span className="w-[10rem] bg-[#38697f] text-white font-bold">
               Marks
             </span>
             <input
@@ -96,7 +96,7 @@ const CreateAssignment = () => {
             />
           </label>
           <label className="input-group md:w-4/5 lg:w-1/2 mx-auto lg:input-group-md">
-            <span className="lg:w-[31%] md:w-[23%] w-[33%] bg-[#FE834C] text-white font-bold">
+            <span className="lg:w-[31%] md:w-[23%] w-[33%] bg-[#38697f] text-white font-bold">
               Date
             </span>
             <DatePicker
@@ -110,7 +110,7 @@ const CreateAssignment = () => {
 
         <div className=" flex flex-col lg:flex-row gap-12 mb-10">
           <label className="input-group md:w-4/5 lg:w-1/2 mx-auto lg:input-group-md">
-            <span className="w-[10rem] bg-[#FE834C] text-white font-bold">
+            <span className="w-[10rem] bg-[#38697f] text-white font-bold">
               Image URL
             </span>
             <input
@@ -121,7 +121,7 @@ const CreateAssignment = () => {
             />
           </label>
           <label className="input-group md:w-4/5 lg:w-1/2 mx-auto lg:input-group-md">
-            <span className="w-[10rem] bg-[#FE834C] text-white font-bold">
+            <span className="w-[10rem] bg-[#38697f] text-white font-bold">
               Level
             </span>
             <select
@@ -138,7 +138,7 @@ const CreateAssignment = () => {
 
         <div className=" flex flex-col lg:flex-row gap-12 mb-10">
           <label className="input-group md:w-4/5 lg:w-full mx-auto input-group-md">
-            <span className="w-[10rem] bg-[#FE834C] text-white font-bold">
+            <span className="w-[10rem] bg-[#38697f] text-white font-bold">
               Description
             </span>
             <textarea
@@ -150,7 +150,7 @@ const CreateAssignment = () => {
         </div>
 
         <input
-          className="w-full text-center btn text-white text-bold text-lg bg-[#FE834C]"
+          className="w-full text-center btn text-white text-bold text-lg bg-[#38697f]"
           type="submit"
           value="Post Assignment"
         />
@@ -159,4 +159,4 @@ const CreateAssignment = () => {
   );
 };
 
-export default CreateAssignment;
+export default AddNewTask;
